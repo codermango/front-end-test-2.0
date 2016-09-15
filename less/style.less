@@ -1,0 +1,297 @@
+// ********** ********** ********** ********** Config
+
+@image-path: "../images";
+@background-color: #568648;
+@site-width: 940px;
+
+// ********** ********** ********** ********** Mixins
+
+.box-sizing (border) {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.box-sizing (content) {
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+.box-sizing (@_) {}
+
+.gradient (@start, @end) {
+	// Note that the IE < 9 version may not work with shorthand colors
+	
+	// Fallback
+	background-color: mix(@start, @end, 50%);
+	//background-color: @end;
+	
+	// W3C
+	background: linear-gradient(top, @start, @end);
+	
+	// Safari 4-5, Chrome 1-9
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@start), to(@end));
+	
+	// Safari 5.1, Chrome 10+
+	background: -webkit-linear-gradient(top, @start, @end);
+	
+	// Firefox 3.6+
+	background: -moz-linear-gradient(top, @start, @end);
+	
+	// IE < 9
+	filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr='@{start}', endColorstr='@{end}')";
+	
+	// IE 10
+	background: -ms-linear-gradient(top, @start, @end);
+	
+	// Opera 11.10+
+	background: -o-linear-gradient(top, @start, @end);
+}
+
+.button () {
+	.gradient(#bb534f, #892825);
+	border: 2px solid #892825;
+	color: white;
+	float: right;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 0;
+	padding: 4px 12px;
+}
+
+
+// ********** ********** ********** ********** Styles
+
+body {
+	-webkit-font-smoothing: antialiased;
+	background-color: @background-color;
+	font-family: "Myriad Pro", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+}
+
+table {
+	border: none;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+button,
+input {
+	-webkit-font-smoothing: antialiased;
+	.box-sizing (border);
+	border: 0;
+	font-family: "Myriad Pro", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+	font-size: 16px;
+	padding: 3px;
+}
+
+button,
+input[type="submit"] {
+	.button;
+}
+
+.page-wrapper {
+	margin: 0 auto;
+	overflow: hidden;
+	width: @site-width;
+}
+
+.booking-form {
+	background-color: #466f3b;
+	color: white;
+	font-size: 1.2em;
+	margin: 20px auto;
+	padding: 12px;
+	overflow: hidden;
+	
+	h2 {
+		border-bottom: 2px solid darken(#466f3b, 5%);
+		font-size: 1.4em;
+		font-weight: normal;
+		margin: 0;
+	}
+	
+	.wrapper {
+		margin-top: 10px;
+		overflow: hidden;
+	}
+
+	.date-inputs {
+		float: left;
+	}
+	
+	.date-connect {
+		float: left;
+		line-height: 1.6em;
+		margin: auto 5px;
+		text-align: center;
+		width: 30px;
+	}
+}
+
+#rates-result {
+	margin-top: 1em;
+	
+	.rate {
+		background-color: #466f3b;
+		color: #fff;
+		margin-top: 1px;
+		overflow: hidden;
+		padding: 7px 10px;
+		
+		.description {
+			float: left;
+			width: (@site-width - 20px) * 0.6;
+			
+			span {
+				display: block;
+				font-size: 16px;
+				font-weight: bold;
+			}
+		}
+		
+		.price {
+			float: left;
+			font-size: 24px;
+			font-weight: bold;
+			padding-top: 0.1em;
+			text-align: right;
+			width: (@site-width - 20px) * 0.3;
+		}
+		
+		.action {
+			float: right;
+			width: (@site-width - 20px) * 0.1;
+		}
+	}
+}
+
+#page-header {
+	background: #646464 url('@{image-path}/header-background.png') repeat-x center bottom;
+	border-bottom: 3px solid #646464;
+	color: #fff;
+	height: 121px;
+	overflow: hidden;
+	
+	#header-logo {
+		float: left;
+		margin-left: 20px;
+		margin-top: 28px;
+	}
+	
+	#header-tagline {
+		float: right;
+		margin-right: 20px;
+		margin-top: 20px;
+		
+		h1 {
+			font-size: 36px;
+			font-weight: normal;
+		}
+	}
+}
+
+#page-container {
+	margin: 0 auto;
+	width: 100%;
+}
+
+#page-splash {
+	background: url('@{image-path}/carousel-background.png') repeat-x;
+	border-top: 1px solid #4b5c4b;
+	height: 480px;
+	left: 0;
+	overflow: hidden;
+	position: relative;
+	top: 0;
+	
+	#hint {
+		margin: 0 auto;
+		position: absolute;
+		right: 50px;
+		top: 40px;
+	}
+	
+	#navigator {
+		height: 480px;
+		margin: 0 auto;
+		max-width: @site-width;
+		position: relative;
+		top: -480px;
+		
+		a {
+			cursor: pointer;
+		}
+	}
+}
+
+#splash {
+	background: url('@{image-path}/carousel-glow.png') no-repeat center center;
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	width: 100%;
+}
+
+#slide01 {
+	background-image: url('@{image-path}/car-ford-mustang.png');
+	//background-image: url('@{image-path}/test5.png');
+	
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 480px;
+	margin: auto;
+	position: relative;
+	max-width: 700px;
+	width: 100%;
+	
+	h1 {
+		color: #fff;
+		font: 36px/1.2 'Myriad Pro', Arial, sans-serif;
+		margin: 0;
+		padding: 0;
+	}
+	
+	p {
+		color: #fff;
+		font: 22px/1 'Myriad Pro', Arial, sans-serif;
+		margin: 0;
+		padding: 0;
+	}
+	
+	&>.text {
+		padding-top: 390px;
+		white-space: nowrap; 
+	}
+}
+
+#page-main {
+	background: url('@{image-path}/main-background.png') repeat-x left top;
+	padding-bottom: 20px;
+	padding-top: 1px;
+}
+
+#page-footer {
+	color: #fff;
+	
+	h4 {
+		margin: 1em 0 0 0;
+	}
+	
+	p {
+		font-size: 12px;
+		margin: 0.3em 0;
+	}
+	
+	.page-wrapper {
+		padding-bottom: 25px;
+	}
+}
+
+
+
+

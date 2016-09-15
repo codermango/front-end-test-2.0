@@ -1,0 +1,36 @@
+************************************************
+*** Fareoffice Frond-end Developer Work Test ***
+************************************************
+
+
+This test has two specific tasks to do, but feel free to do any improvements to any part of the code. We will look at all the changes you make, so do your best to impress us. :)
+
+We don't care about IE7 or older, but we do care about IE8 for a while still.
+
+
+1. HTML/LESS/CSS
+The attached page is not very modern. The hottest buzz in the business today is responsive and this page is not responsive yet. Your job is to make this page responsive, to any degree you feel suitable. If you feel talkative, you can also send us some comments on what you did, how and why.
+
+We strongly recommend you to use the power of Less CSS here and not edit the CSS file directly. 
+
+
+2. JAVASCRIPT
+There is a JSON service available to give back rates (cars) to display on this page. Your job is to use javascript to post the dates/times the user has entered to this service and display the results, including some kind of error handling. To get a good sense of your skills, we want you to write the JSON service consumer in vanilla Javascript.
+
+There is pre-made html code to use for every rate returned, in a comment in the html file. If you feel talkative, you can also send us some comments on what you did, how and why.
+
+
+JSON SERVICE REQUEST (all required)
+
+* api-key (string): security hash
+* location-code (string): the rental location
+* from-date (yyyy-mm-dd): pick up the car at this date
+* from-time (hh:mm): pick up the car at this time
+* to-date (yyyy-mm-dd): return the car at this date
+* to-time (hh:mm): return the car at this time
+
+The service is located at http://r.styletag.net/fareoffice/service.php
+
+JSON SERVICE RESPONSE
+
+The service returns an error if the security hash is wrong. If everything is in order, you should get some rates back with car details and prices. These prices are daily rates, they do not change depending on the number of days you send in.
